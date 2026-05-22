@@ -15,7 +15,7 @@ const RustLogo = (props) => {
     });
   });
   return (
-    <mesh position={[-10,0,0]} ref={logoRef}  rotation={[0, 3.7, 0]} scale={1}>
+    <mesh {...props}  ref={logoRef}  rotation={[0, 3.4, 0]} scale={1.8}>
       <primitive object={scene} />
     </mesh>
   );
