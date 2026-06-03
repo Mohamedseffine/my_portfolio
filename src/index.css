@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import url("https://fonts.cdnfonts.com/css/general-sans");
 
-
-
 * {
   scroll-behavior: smooth;
 }
@@ -20,6 +18,15 @@ body {
   }
 }
 
+@utility head-text {
+  @apply text-gray_gradient;
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 600;
+
+  @variant sm {
+    font-size: 2.25rem; /* sm:text-4xl */
+  }
+}
 
 @utility nav-ul {
   display: flex;
@@ -42,17 +49,17 @@ body {
   color: theme(colors.neutral.400);
   font-family: var(--font-generalsans);
   padding-block: theme(spacing.2);
-  
+
   @variant max-[640px] {
     width: 100%;
     padding-inline: theme(spacing.5);
     border-radius: theme(borderRadius.md);
-    
+
     &:hover {
       background-color: theme(colors.black / 0.5);
     }
   }
-  
+
   @variant hover {
     color: theme(colors.white);
   }
@@ -60,20 +67,19 @@ body {
 
 @utility nav-li_a {
   font-size: theme(fontSize.lg);
-  
+
   @variant md {
     font-size: theme(fontSize.base);
   }
-  
+
   @variant hover {
     color: theme(colors.white);
   }
-  
+
   transition-property: color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-
 
 @utility nav-sidebar {
   position: absolute;
@@ -86,18 +92,22 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   z-index: 20;
-  
-  
+
   @variant sm {
     display: none;
   }
-  
+
   /* For mobile: */
   display: block;
 }
 
 @utility text-gray_gradient {
-  background-image: linear-gradient(to right, #BEC1CF 60%, #D5D8EA 60%, #D5D8EA 100%);
+  background-image: linear-gradient(
+    to right,
+    #bec1cf 60%,
+    #d5d8ea 60%,
+    #d5d8ea 100%
+  );
   background-clip: text;
   color: transparent;
 }
@@ -106,19 +116,131 @@ body {
   text-align: center;
   font-family: var(--font-generalsans);
   font-weight: 900;
-  line-height: 1.5;  /* leading-normal = 1.5 */
-  font-size: 1.875rem;  /* text-3xl */
-  
+  line-height: 1.5; /* leading-normal = 1.5 */
+  font-size: 1.875rem; /* text-3xl */
+
   @variant sm {
-    font-size: 2.25rem;  /* sm:text-4xl */
+    font-size: 2.25rem; /* sm:text-4xl */
   }
-  
+
   @variant md {
-    font-size: 3rem;     /* md:text-5xl */
+    font-size: 3rem; /* md:text-5xl */
   }
-  
+
   @variant xl {
-    font-size: 3.75rem;  /* xl:text-6xl */
+    font-size: 3.75rem; /* xl:text-6xl */
+  }
+}
+
+@utility btn {
+  display: flex;
+  gap: theme(spacing.4);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: theme(spacing.3);
+  border-radius: theme(borderRadius.md);
+  background-color: theme(colors.neutral.800);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: theme(colors.white);
+  margin-inline: auto;
+
+  @variant active {
+    transform: scale(0.95);
+  }
+}
+
+@utility btn-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background-color: theme(colors.green.400);
+  opacity: 0.75;
+}
+
+@utility btn-ping_dot {
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  height: theme(spacing.3);
+  width: theme(spacing.3);
+  background-color: theme(colors.green.500);
+}
+
+@utility grid-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid theme(colors.neutral.700);
+  background-color: theme(colors.neutral.950);
+  border-radius: theme(borderRadius.lg);
+  padding: theme(spacing.4);
+  display: flex;
+  flex-direction: column;
+  gap: theme(spacing.5);
+
+  @variant sm {
+    padding: theme(spacing.7);
+  }
+}
+
+@utility grid-headtext {
+  font-size: theme(fontSize.xl);
+  font-weight: 600;
+  margin-bottom: theme(spacing.2);
+  color: theme(colors.white);
+  font-family: var(--font-generalsans);
+}
+
+@utility grid-subtext {
+  color: #afb0b6;
+  font-size: theme(fontSize.base);
+  font-family: var(--font-generalsans);
+}
+
+@utility copy-container {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: theme(spacing.2);
+}
+
+@utility tech-logo {
+  width: theme(spacing.10);
+  height: theme(spacing.10);
+  border-radius: theme(borderRadius.md);
+  padding: theme(spacing.2);
+  background-color: theme(colors.neutral.100 / 0.1);
+  backdrop-filter: blur(theme(backdropBlur.lg));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@utility arrow-gradient {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+}
+
+@utility arrow-btn {
+  width: theme(spacing.10);
+  height: theme(spacing.10);
+  padding: theme(spacing.3);
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 150ms;
+  border-radius: 9999px;
+  @variant active {
+    transform: scale(0.95);
   }
 }
 
@@ -129,7 +251,6 @@ body {
   transform-origin: 70% 70%;
   display: inline-block;
 }
-
 
 @keyframes wave-animation {
   0% {
