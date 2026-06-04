@@ -4,27 +4,13 @@ Command: npx gltfjsx@6.5.3 computer.glb --transform
 Files: computer.glb [273.04KB] > /home/mosdef/development/my_portfolio/public/models/computer-transformed.glb [269.88KB] (1%)
 */
 
-import React, { useEffect } from 'react'
-import { useGLTF, useAnimations, useVideoTexture } from '@react-three/drei'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import React from 'react'
+import { useGLTF, useAnimations } from '@react-three/drei'
 
-const DemoComputer = (props) => {
+export function Model(props) {
   const group = React.useRef()
-  const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4')
-  useEffect(()=>{
-    if (txt) {
-      txt.flipY = false;
-    }
-  }, [txt])
-  useGSAP(()=> {
-    gsap.from(group.current.rotation, {
-      y:Math.PI / 2,
-      duration:1,
-      ease: 'power3.out'
-    })
-  }, [txt])
-  const { nodes, materials } = useGLTF('/models/computer-transformed.glb')
+  const { nodes, materials, animations } = useGLTF('/computer-transformed.glb')
+  const { actions } = useAnimations(animations, group)
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -180,9 +166,7 @@ const DemoComputer = (props) => {
           <group name="Tower-light-007" position={[16.089, -3.47, -14.495]} rotation={[Math.PI / 2, 0, 0]} scale={0.963} />
           <group name="Tower-light-008" position={[15.155, -3.47, -14.495]} rotation={[Math.PI / 2, 0, 0]} scale={0.963} />
         </group>
-        <mesh name="monitor-screen" geometry={nodes['monitor-screen'].geometry} material={nodes['monitor-screen'].material} position={[0.127, 1.831, 0.511]} rotation={[1.571, -0.005 , 0.031]} scale={[0.661, 0.608, 0.401]}>
-          <meshBasicMaterial map={txt} /> 
-        </mesh> 
+        <mesh name="monitor-screen" geometry={nodes['monitor-screen'].geometry} material={nodes['monitor-screen'].material} position={[0.127, 1.831, 0.511]} rotation={[1.571, -0.005, 0.031]} scale={[0.661, 0.608, 0.401]} />
         <group name="Monitor-B-_computer_0" position={[0.266, 1.132, 0.051]} rotation={[0, -0.033, 0]} scale={[0.042, 0.045, 0.045]}>
           <mesh name="Monitor-B-_computer_0_1" geometry={nodes['Monitor-B-_computer_0_1'].geometry} material={materials.computer} />
           <mesh name="Monitor-B-_computer_0_2" geometry={nodes['Monitor-B-_computer_0_2'].geometry} material={materials.base__0} />
@@ -199,6 +183,3 @@ const DemoComputer = (props) => {
 }
 
 useGLTF.preload('/computer-transformed.glb')
-
-
-export default DemoComputer ;
