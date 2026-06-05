@@ -285,4 +285,14 @@ export const EducationAndCerts = [
     icon: '/assets/notion.svg',
     animation: 'salute',
   },
+
+  {
+    id: 4,
+    name: 'ISC2',
+    pos: 'Certified In Cybersecurity',
+    duration: '2025 - 2026',
+    title: "Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.",
+    icon: '/assets/notion.svg',
+    animation: 'victory',
+  },
 ];
