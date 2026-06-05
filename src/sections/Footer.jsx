@@ -64,6 +64,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
+      <p className="text-white" >&copy: </p>
     </section>
   );
 };
