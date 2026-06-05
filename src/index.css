@@ -244,6 +244,117 @@ body {
   }
 }
 
+@utility client-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: theme(spacing.5);
+  margin-top: theme(spacing.12);
+
+  @variant md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@utility client-review {
+  border-radius: theme(borderRadius.lg);
+  padding: theme(spacing.5);
+  grid-column: span 1 / span 1;
+  background-color: theme(
+    colors.neutral.800
+  ); /* or theme(colors.neutral.800) */
+
+  @variant md {
+    padding: theme(spacing.10);
+  }
+}
+
+@utility client-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: theme(spacing.5);
+  margin-top: theme(spacing.7);
+
+  @variant lg {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@utility contact-container {
+  max-width: theme(maxWidth.xl);
+  position: relative;
+  z-index: 10;
+  padding-inline: theme(spacing.5);
+  margin-top: theme(spacing.12);
+  
+  @variant sm {
+    padding-inline: theme(spacing.10);
+  }
+}
+
+@utility field-label {
+  font-size: theme(fontSize.lg);
+  color: theme(colors.white / 0.8);
+}
+
+@utility field-input {
+  width: 100%;
+  background-color: theme(colors.black / 0.3);
+  padding-inline: theme(spacing.5);
+  padding-block: theme(spacing.2);
+  min-height: 3.5rem;  /* min-h-14 */
+  border-radius: theme(borderRadius.lg);
+  font-size: theme(fontSize.lg);
+  color: theme(colors.white);
+  box-shadow: var(--shadow-2xl) var(--shadow-black/20);
+
+  &::placeholder {
+    color: theme(colors.white / 0.5);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@utility field-btn {
+  background-color: theme(colors.black / 0.5);
+  padding-inline: theme(spacing.5);
+  padding-block: theme(spacing.2);
+  min-height: 3rem;  /* min-h-12 */
+  border-radius: theme(borderRadius.lg);
+  box-shadow: var(--shadow-2xl) var(--shadow-black/20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: theme(fontSize.lg);
+  color: theme(colors.white);
+  gap: theme(spacing.3);
+}
+
+@utility field-btn_arrow {
+  width: theme(spacing.3);
+  height: theme(spacing.3);
+  object-fit: contain;
+  filter: invert(1) brightness(0);
+}
+
+
+@utility social-icon {
+  width: theme(spacing.12);
+  height: theme(spacing.12);
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: theme(colors.black / 0.3);
+  border: 1px solid theme(colors.black / 0.2);
+}
+
+
+
 .waving-hand {
   animation-name: wave-animation;
   animation-duration: 2.5s;
