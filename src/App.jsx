@@ -5,6 +5,7 @@ import Projects from "./sections/Projects.jsx"
 import Recommendations from "./sections/Recommendations.jsx"
 import Contact from "./sections/Contact.jsx"
 import Footer from "./sections/Footer.jsx"
+import Education from "./sections/Education.jsx"
 function App() {
   return (
     <main className="max-w-10/12 mx-auto">
@@ -13,7 +14,7 @@ function App() {
       <About />
       <Projects />
       <Recommendations />
-      
+      <Education />
       <Contact />
       <Footer />
     </main>
