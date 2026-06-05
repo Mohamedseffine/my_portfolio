@@ -12,29 +12,36 @@ const Contact = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      await emailjs.send("service_7otw2le", "template_apm8d2k", {
-        name: form.name,
-        email: form.email,
-        message: form.message,
-      }, 'Pg4tXSgWUcOajNgGx');
-      setLoading(false)
-      setForm({ name: "", email: "", message: "" })
-      alert("your message has been sent")
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      setLoading(false);
+      setForm({ name: "", email: "", message: "" });
+      alert("your message has been sent");
     } catch (e) {
-        setLoading(false);
-        console.log(e)
-        alert("something went wrong")
+      setLoading(false);
+      console.log(e);
+      alert("something went wrong");
     }
   };
 
   return (
-    <section className="c-space my-20">
-      <div className="relative min-h-screen flex items-center justify-center flex-col">
-        <img
-          src="/assets/terminal.png"
-          alt="terminal background"
-          className="absolute inset-0 min-h-screen"
-        />
+    <section className="c-space my-20" id="contact">
+      <div
+        className="relative flex items-center justify-center py-20"
+        style={{
+          backgroundImage: "url('/assets/terminal.png')",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="contact-container">
           <h3 className="head-text">Let's Talk</h3>
           <p className=" text-lg text-neutral-400 mt-3">
@@ -73,7 +80,6 @@ const Contact = () => {
             <label className="space-y-3">
               <span className="field-label "> Your Message</span>
               <textarea
-              
                 type="text"
                 name="message"
                 value={form.message}
@@ -84,7 +90,11 @@ const Contact = () => {
                 placeholder="Hi, I want to..."
               />
             </label>
-            <button className=" field-btn cursor-pointer" type="submit" disabled={loading}>
+            <button
+              className=" field-btn cursor-pointer"
+              type="submit"
+              disabled={loading}
+            >
               {loading ? "Sending..." : "Send Message"}
               <img
                 src="/assets/arrow-up.png"

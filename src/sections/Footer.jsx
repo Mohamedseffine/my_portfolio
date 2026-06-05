@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <section className="c-space pt-7 pb-3 border-neutral-800 flex justify-between items-center flex-wrap gap-5 ">
-      <div className="text-white flex gap-2">
+    <footer className="c-space pt-7 pb-3 border-t text-white border-neutral-600 flex justify-between items-center flex-wrap gap-5">
+      <div className="text-white-500 flex gap-2">
         <p>Terms & Conditions</p>
         <p>|</p>
         <p>Privacy Policy</p>
@@ -64,8 +64,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p className="text-white" >&copy: </p>
-    </section>
+      <p className="text-white" > &copy; Mosdef 2026 </p>
+    </footer>
   );
 };
 export default Footer;
