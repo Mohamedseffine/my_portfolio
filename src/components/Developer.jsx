@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations, useFBX } from "@react-three/drei";
 
-export default function Developer(props) {
+export default function Developer({animationName, ...props}) {
   const group = useRef();
 
   const { scene } = useGLTF(
     "/avatar/avatar-VT5H0OTHWKvhfPpspfp4.glb"
   );
 
-  const { animations } = useFBX("/avatar/Breakdance.fbx");
+  const { animations } = useFBX(`/avatar/${animationName}.fbx`);
 
   animations[0].name = "idle";
 

@@ -1,11 +1,17 @@
 import { Canvas } from "@react-three/fiber";
 import { EducationAndCerts } from "../constants";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import CanvasLoader from "../components/CanvasLoader"
 import Developer from "../components/Developer";
 
 const Education = () => {
+  const [selectedDiv, setSelectedDiv] = useState("Waving")
+  const handleHover = (animation) => {
+    console.log('ana hna a zebi');
+    
+    setSelectedDiv(animation)
+  }
   return (
     <section className="c-space my-20" id="education">
       <div className="w-full text-white">
@@ -19,7 +25,7 @@ const Education = () => {
             <directionalLight position={[10, 10, 10]} intensity={1} />
             <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
             <Suspense fallback={<CanvasLoader />}>
-            <Developer position-y={-3} scale={3} animationName="idle" />
+            <Developer position-y={-3} scale={3} animationName={selectedDiv} />
             </Suspense>
           </Canvas>
         </div>
@@ -27,7 +33,7 @@ const Education = () => {
           <div className="sm:py-10 py-5 sm:px-5 px-2.5">
             {EducationAndCerts.map(
               ({ id, name, pos, duration, title, icon, animation }) => (
-                <div key={id} className="education-content_container group">
+                <div key={id} className="education-content_container group" onMouseOver={() => handleHover(animation)}>
                   <div className="flex flex-col h-full justify-start items-center py-2 ">
                     <div className="education-content_logo">
                       <img src={icon} alt="logo" className="w-full h-full" />
