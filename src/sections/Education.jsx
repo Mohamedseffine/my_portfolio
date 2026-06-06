@@ -1,15 +1,27 @@
 import { Canvas } from "@react-three/fiber";
 import { EducationAndCerts } from "../constants";
+import { OrbitControls } from "@react-three/drei";
+import { Suspense } from "react";
+import CanvasLoader from "../components/CanvasLoader"
+import Developer from "../components/Developer";
 
 const Education = () => {
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="education">
       <div className="w-full text-white">
         <h3 className="head-text">My Education</h3>
       </div>
       <div className="education-container">
         <div className="education-canvas">
-          <Canvas></Canvas>
+          <Canvas>
+            <ambientLight intensity={7} />
+            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+            <directionalLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+            <Suspense fallback={<CanvasLoader />}>
+            <Developer position-y={-3} scale={3} animationName="idle" />
+            </Suspense>
+          </Canvas>
         </div>
         <div className="education-content">
           <div className="sm:py-10 py-5 sm:px-5 px-2.5">
